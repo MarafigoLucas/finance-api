@@ -1,4 +1,4 @@
-package com.marafigo.finance.entities;
+package com.marafigo.finance.entities.enums;
 
 public enum TransactionType {
     INCOME,
