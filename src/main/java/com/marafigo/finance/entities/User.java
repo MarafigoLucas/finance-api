@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_user")
@@ -17,5 +19,8 @@ public class User implements Serializable {
     private String name;
     private String email;
     private String password;
+
+    @OneToMany(mappedBy = "user")
+    private Set<Transaction> transactions = new HashSet<>();
 
 }
