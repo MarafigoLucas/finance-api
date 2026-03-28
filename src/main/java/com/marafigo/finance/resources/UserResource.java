@@ -27,7 +27,7 @@ public class UserResource {
         return ResponseEntity.ok().body(obj);
     }
     @PostMapping
-    public ResponseEntity<User> Insert(@RequestBody User obj){
+    public ResponseEntity<User> insert(@RequestBody User obj){
         obj = service.insert(obj);
         URI uri = ServletUriComponentsBuilder
                 .fromCurrentRequestUri()
