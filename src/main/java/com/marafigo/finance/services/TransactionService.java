@@ -32,6 +32,20 @@ public class TransactionService {
         repository.deleteById(id);
     }
 
+    public Transaction update(Long id, Transaction obj){
+        Transaction entity = repository.getReferenceById(id);
+        updateData(entity, obj);
+        return repository.save(entity);
+    }
+
+    public void updateData(Transaction entity, Transaction obj){
+        entity.setDescription(obj.getDescription());
+        entity.setAmount(obj.getAmount());
+        entity.setType(obj.getType());
+        entity.setDate(obj.getDate());
+        entity.setCategory(obj.getCategory());
+    }
+
 
 
 }

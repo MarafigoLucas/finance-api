@@ -1,6 +1,7 @@
 package com.marafigo.finance.resources;
 
 import com.marafigo.finance.entities.Transaction;
+import com.marafigo.finance.entities.User;
 import com.marafigo.finance.services.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -41,4 +42,12 @@ public class TransactionResource {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Transaction>update (@PathVariable Long id, @RequestBody Transaction obj){
+        obj= service.update(id, obj);
+        return ResponseEntity.ok().body(obj);
+    }
+
+
 }
