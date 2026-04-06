@@ -21,7 +21,7 @@ public class User implements Serializable {
     private String email;
     private String password;
 
-
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private Set<Transaction> transactions = new HashSet<>();
 

@@ -24,7 +24,7 @@ public class Transaction implements Serializable {
 
     @Enumerated(EnumType.STRING)
     private TransactionType type;
-    @JsonIgnore
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;

@@ -24,6 +24,10 @@ public class TransactionService {
         return obj.get();
     }
 
+    public Transaction insert(Transaction obj) {
+        return repository.save(obj);
+    }
+
 
 
 }
