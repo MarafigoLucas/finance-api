@@ -1,5 +1,6 @@
 package com.marafigo.finance.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -17,7 +18,7 @@ public class Category implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "category")
     private Set<Transaction> transactions = new HashSet<>();
 

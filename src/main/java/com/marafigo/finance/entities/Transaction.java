@@ -1,5 +1,6 @@
 package com.marafigo.finance.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.marafigo.finance.entities.enums.TransactionType;
 import jakarta.persistence.*;
 import lombok.*;
@@ -23,7 +24,7 @@ public class Transaction implements Serializable {
 
     @Enumerated(EnumType.STRING)
     private TransactionType type;
-
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;

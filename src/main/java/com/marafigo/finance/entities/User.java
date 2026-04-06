@@ -1,5 +1,6 @@
 package com.marafigo.finance.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,6 +20,7 @@ public class User implements Serializable {
     private String name;
     private String email;
     private String password;
+
 
     @OneToMany(mappedBy = "user")
     private Set<Transaction> transactions = new HashSet<>();
