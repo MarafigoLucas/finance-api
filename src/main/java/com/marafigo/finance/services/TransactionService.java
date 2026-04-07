@@ -2,6 +2,7 @@ package com.marafigo.finance.services;
 
 import com.marafigo.finance.entities.Transaction;
 import com.marafigo.finance.repositories.TransactionRepository;
+import com.marafigo.finance.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,7 @@ public class TransactionService {
 
     public Transaction findById(Long id){
         Optional<Transaction> obj = repository.findById(id);
-        return obj.get();
+       return obj.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 
     public Transaction insert(Transaction obj) {

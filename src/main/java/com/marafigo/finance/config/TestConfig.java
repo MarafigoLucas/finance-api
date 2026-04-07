@@ -59,7 +59,7 @@ public class TestConfig implements CommandLineRunner {
                 Instant.parse("2026-05-06T10:00:00Z"),
                 TransactionType.INCOME,
                 u2,
-                c2);
+                c3);
 
         transactionRepository.saveAll(Arrays.asList(t1,t2,t3));
     }
