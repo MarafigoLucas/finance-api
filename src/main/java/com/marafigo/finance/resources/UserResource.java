@@ -1,6 +1,7 @@
 package com.marafigo.finance.resources;
 
 import com.marafigo.finance.entities.User;
+import com.marafigo.finance.entities.dto.UserBalanceDTO;
 import com.marafigo.finance.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -46,6 +47,12 @@ public class UserResource {
     public ResponseEntity<User>update (@PathVariable Long id, @RequestBody User obj){
         obj= service.update(id, obj);
         return ResponseEntity.ok().body(obj);
+    }
+
+    @GetMapping(value = "/{id}/balance")
+    public ResponseEntity<UserBalanceDTO>geBalance(@PathVariable Long id){
+        UserBalanceDTO dto = service.getUserBalance(id);
+        return ResponseEntity.ok().body(dto);
     }
 
 

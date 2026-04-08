@@ -1,6 +1,8 @@
 package com.marafigo.finance.services;
 
+import com.marafigo.finance.entities.Transaction;
 import com.marafigo.finance.entities.User;
+import com.marafigo.finance.entities.dto.UserBalanceDTO;
 import com.marafigo.finance.repositories.UserRepository;
 import com.marafigo.finance.services.exceptions.DatabaseException;
 import com.marafigo.finance.services.exceptions.ResourceNotFoundException;
@@ -51,6 +53,20 @@ public class UserService {
     private void updateData(User entity, User obj) {
         entity.setName(obj.getName());
         entity.setEmail(obj.getEmail());
+    }
+
+    public UserBalanceDTO getUserBalance(Long id){
+        User user = findById(id);
+
+        double income = 0.0;
+        double expense = 0.0;
+        for(Transaction t : user.getTransactions()){
+            if(t.getType().toString().equals("INCOME")){
+                income += t.getAmount().doubleValue();
+            }else {
+                expense+= t.getAmount().doubleValue();
+            }
+        }return new UserBalanceDTO(income, expense,(income-expense));
     }
 
 
