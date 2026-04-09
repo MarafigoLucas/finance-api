@@ -50,8 +50,10 @@ public class UserResource {
     }
 
     @GetMapping(value = "/{id}/balance")
-    public ResponseEntity<UserBalanceDTO>geBalance(@PathVariable Long id){
-        UserBalanceDTO dto = service.getUserBalance(id);
+    public ResponseEntity<UserBalanceDTO>geBalance(@PathVariable Long id,
+    @RequestParam(value = "minDate", defaultValue = "") String minDate,
+    @RequestParam(value = "maxDate", defaultValue = "") String maxDate){
+        UserBalanceDTO dto = service.getUserBalance(id, minDate, maxDate);
         return ResponseEntity.ok().body(dto);
     }
 
