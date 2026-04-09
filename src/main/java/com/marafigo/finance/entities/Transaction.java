@@ -19,6 +19,7 @@ public class Transaction implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String description;
+    @Column(precision = 19,scale = 2)
     private BigDecimal amount;
     private Instant date;
 

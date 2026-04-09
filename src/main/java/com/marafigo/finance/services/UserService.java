@@ -76,10 +76,9 @@ public class UserService {
             }else {
                 expense = expense.add(t.getAmount());
             }
-        }return new UserBalanceDTO(
-                income.doubleValue(),
-                expense.doubleValue(),
-                income.subtract(expense).doubleValue()
+        }return new UserBalanceDTO(income,
+                expense,
+                income.subtract(expense)
         );
     }
 
