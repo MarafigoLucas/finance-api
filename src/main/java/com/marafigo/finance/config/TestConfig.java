@@ -25,11 +25,13 @@ public class TestConfig implements CommandLineRunner {
     private CategoryRepository categoryRepository;
     @Autowired
     private TransactionRepository transactionRepository;
+    @Autowired
+    private org.springframework.security.crypto.password.PasswordEncoder passwordEncoder;
 
     @Override
     public void run(String... args) throws Exception {
-        User u1 = new User(null, "Lucas","Lucas@gmail","naruto10",null);
-        User u2 = new User(null, "Nic","Nic@gmail","Olga10",null);
+        User u1 = new User(null, "Lucas","Lucas@gmail", passwordEncoder.encode("naruto10"),null);
+        User u2 = new User(null, "Nic","Nic@gmail", passwordEncoder.encode("Olga10"),null);
 
         userRepository.saveAll(Arrays.asList(u1,u2));
 

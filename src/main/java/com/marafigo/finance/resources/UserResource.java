@@ -1,7 +1,7 @@
 package com.marafigo.finance.resources;
 
 import com.marafigo.finance.entities.User;
-import com.marafigo.finance.entities.dto.UserBalanceDTO;
+import com.marafigo.finance.dto.UserBalanceDTO;
 import com.marafigo.finance.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -50,6 +50,8 @@ public class UserResource {
     }
 
     @GetMapping(value = "/{id}/balance")
+
+
     public ResponseEntity<UserBalanceDTO>geBalance(@PathVariable Long id,
     @RequestParam(value = "minDate", defaultValue = "") String minDate,
     @RequestParam(value = "maxDate", defaultValue = "") String maxDate){

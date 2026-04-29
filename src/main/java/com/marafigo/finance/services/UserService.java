@@ -1,8 +1,9 @@
 package com.marafigo.finance.services;
 
+import com.marafigo.finance.dto.RegisterDTO;
 import com.marafigo.finance.entities.Transaction;
 import com.marafigo.finance.entities.User;
-import com.marafigo.finance.entities.dto.UserBalanceDTO;
+import com.marafigo.finance.dto.UserBalanceDTO;
 import com.marafigo.finance.repositories.TransactionRepository;
 import com.marafigo.finance.repositories.UserRepository;
 import com.marafigo.finance.services.exceptions.DatabaseException;
@@ -83,4 +84,15 @@ public class UserService {
     }
 
 
+    @Autowired
+    private org.springframework.security.crypto.password.PasswordEncoder passwordEncoder;
+
+    public User register(RegisterDTO data) {
+        if (repository.findByEmail(data.email()) != null) {
+            throw new RuntimeException("Email já cadastrado");
+        }
+        String encryptedPassword = passwordEncoder.encode(data.password());
+        User newUser = new User(null, data.name(), data.email(), encryptedPassword, new java.util.HashSet<>());
+        return repository.save(newUser);
+    }
 }
